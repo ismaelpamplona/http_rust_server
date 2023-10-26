@@ -17,9 +17,13 @@ body {
 
 
 nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     height: 80px;
     background-color: #333;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    padding: 0 10px;
 }
 
 nav ul {
@@ -35,6 +39,13 @@ nav ul {
 
 nav li {
     float: left;
+}
+
+nav #counter {
+    background: rgba(255, 255, 255, .2);
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: yellow;
 }
 
 a {
@@ -63,7 +74,6 @@ a:hover {
     background-size: cover;
     background-position: center;
     border-radius: 50%;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     filter: invert(100%);
 }
 
@@ -75,12 +85,14 @@ main {
     height: calc(100vh - 160px);
 }
 
-main .container {
+main .container,
+main article {
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
     background-color: #333;
     padding: 20px;
-    max-width: 800px;
+    width: 800px;
+    max-width: 100%;
     margin: 0 auto;
     height: fit-content;
     margin-top: 100px;
