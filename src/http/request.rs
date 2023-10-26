@@ -1,10 +1,12 @@
 use super::method::{Method, MethodError};
 use super::QueryString;
-use std::convert::TryFrom;
-use std::error::Error;
-use std::fmt::{Display, Formatter, Result as FmtResult};
-use std::str;
-use std::str::Utf8Error;
+use std::{
+    convert::TryFrom,
+    error::Error,
+    fmt::{Display, Formatter, Result as FmtResult},
+    str,
+    str::Utf8Error,
+};
 
 /* example http request structure
 GET /user?id:10 HTTP/1.1\r\n
@@ -17,6 +19,20 @@ pub struct Request<'buf> {
     path: &'buf str,
     query_string: Option<QueryString<'buf>>,
     method: Method,
+}
+
+impl<'buf> Request<'buf> {
+    pub fn path(&self) -> &str {
+        &self.path
+    }
+
+    pub fn method(&self) -> &Method {
+        &self.method
+    }
+
+    pub fn query_string(&self) -> Option<&QueryString> {
+        self.query_string.as_ref()
+    }
 }
 
 impl<'buf> TryFrom<&'buf [u8]> for Request<'buf> {
